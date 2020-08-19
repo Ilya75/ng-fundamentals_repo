@@ -10,6 +10,7 @@ import { EventsListComponent, EventThumbnailComponent,
 import { NavBarComponent } from './nav/navbar.component';
 import { ToastrService } from './common/toastr.service';
 import { Error404Component } from './errors/error-404.component';
+import { AuthService } from '../app/user/auth.service';
 import { appRoutes } from '../app/routes';
 
 
@@ -38,6 +39,7 @@ export function checkDirtyState(component:CreateEventComponent) {
     EventService, 
     ToastrService,
     EventListResolver,
+    AuthService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
