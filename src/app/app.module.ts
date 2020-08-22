@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { EventsAppComponent } from './events-app.component'
 
 import { EventsListComponent, EventThumbnailComponent, 
@@ -12,6 +13,7 @@ import { ToastrService } from './common/toastr.service';
 import { Error404Component } from './errors/error-404.component';
 import { AuthService } from '../app/user/auth.service';
 import { appRoutes } from '../app/routes';
+import { fromEventPattern } from 'rxjs';
 
 
 export function checkDirtyState(component:CreateEventComponent) {
@@ -24,6 +26,8 @@ export function checkDirtyState(component:CreateEventComponent) {
 @NgModule({
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   declarations: [
