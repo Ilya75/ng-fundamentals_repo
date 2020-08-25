@@ -6,10 +6,11 @@ import { EventsAppComponent } from './events-app.component'
 
 import { EventsListComponent, EventThumbnailComponent, 
           EventService, EventDetailsComponent, CreateEventComponent, 
-          EventRouteActivator, EventListResolver, CreateSessionComponent  } from './events/index'
+          EventRouteActivator, EventListResolver, CreateSessionComponent, SessionListComponent  } from './events/index'
 
 import { NavBarComponent } from './nav/navbar.component';
 import { ToastrService } from './common/toastr.service';
+import { CollapsibleWellComponent } from './common/collapsible-well.component';
 import { Error404Component } from './errors/error-404.component';
 import { AuthService } from '../app/user/auth.service';
 import { appRoutes } from '../app/routes';
@@ -38,7 +39,9 @@ export function checkDirtyState(component:CreateEventComponent) {
     EventDetailsComponent,
     CreateEventComponent,
     CreateSessionComponent,
-    Error404Component
+    SessionListComponent,
+    Error404Component,
+    CollapsibleWellComponent
   ],
   providers: [ 
     EventService, 
