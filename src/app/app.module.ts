@@ -10,13 +10,14 @@ import { EventsListComponent, EventThumbnailComponent,
           SessionListComponent, DurationPipe  } from './events/index'
 
 import { NavBarComponent } from './nav/navbar.component';
-import { ToastrService } from './common/toastr.service';
+import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
 import { CollapsibleWellComponent } from './common/collapsible-well.component';
 import { Error404Component } from './errors/error-404.component';
 import { AuthService } from '../app/user/auth.service';
 import { appRoutes } from '../app/routes';
 import { fromEventPattern } from 'rxjs';
 
+declare let toastr: Toastr;
 
 export function checkDirtyState(component:CreateEventComponent) {
   if (component.isDirty)
@@ -47,8 +48,14 @@ export function checkDirtyState(component:CreateEventComponent) {
   ],
   providers: [ 
     EventService, 
-    ToastrService,
-    EventListResolver,
+    {
+      provide: TOASTR_TOKEN,
+      useValue: toastr
+    },
+    { 
+      provide: EventListResolver, 
+      useClass: EventListResolver
+    },
     AuthService,
     {
       provide: 'canDeactivateCreateEvent',
