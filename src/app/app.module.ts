@@ -10,14 +10,15 @@ import { EventsListComponent, EventThumbnailComponent,
           SessionListComponent, DurationPipe  } from './events/index'
 
 import { NavBarComponent } from './nav/navbar.component';
-import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
-import { CollapsibleWellComponent } from './common/collapsible-well.component';
+import { TOASTR_TOKEN, Toastr, JQ_TOKEN, CollapsibleWellComponent, 
+            SimpleModalComponent, ModalTriggerDirective  } from './common/index';
 import { Error404Component } from './errors/error-404.component';
 import { AuthService } from '../app/user/auth.service';
 import { appRoutes } from '../app/routes';
 import { fromEventPattern } from 'rxjs';
 
-declare let toastr: Toastr;
+let toastr: Toastr = window['toastr'];
+let jQuery = window['$']
 
 export function checkDirtyState(component:CreateEventComponent) {
   if (component.isDirty)
@@ -44,13 +45,19 @@ export function checkDirtyState(component:CreateEventComponent) {
     SessionListComponent,
     Error404Component,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective
   ],
   providers: [ 
     EventService, 
     {
       provide: TOASTR_TOKEN,
       useValue: toastr
+    },
+    {
+       provide: JQ_TOKEN,
+       useValue: jQuery
     },
     { 
       provide: EventListResolver, 
