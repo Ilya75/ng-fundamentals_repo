@@ -7,7 +7,7 @@ import { EventsAppComponent } from './events-app.component'
 import { EventsListComponent, EventThumbnailComponent, 
           EventService, EventDetailsComponent, CreateEventComponent, 
           EventRouteActivator, EventListResolver, CreateSessionComponent, 
-          SessionListComponent, DurationPipe  } from './events/index'
+          SessionListComponent, DurationPipe, UpvoteComponent, VoterService  } from './events/index'
 
 import { NavBarComponent } from './nav/navbar.component';
 import { TOASTR_TOKEN, Toastr, JQ_TOKEN, CollapsibleWellComponent, 
@@ -47,7 +47,8 @@ export function checkDirtyState(component:CreateEventComponent) {
     CollapsibleWellComponent,
     DurationPipe,
     SimpleModalComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    UpvoteComponent
   ],
   providers: [ 
     EventService, 
@@ -68,7 +69,8 @@ export function checkDirtyState(component:CreateEventComponent) {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
     },
-    EventRouteActivator
+    EventRouteActivator,
+    VoterService
   ],
   bootstrap: [EventsAppComponent]
 })
