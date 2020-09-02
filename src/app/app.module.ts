@@ -17,6 +17,7 @@ import { Error404Component } from './errors/error-404.component';
 import { AuthService } from '../app/user/auth.service';
 import { appRoutes } from '../app/routes';
 import { fromEventPattern } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http'
 
 let toastr: Toastr = window['toastr'];
 let jQuery = window['$']
@@ -33,7 +34,8 @@ export function checkDirtyState(component:CreateEventComponent) {
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   declarations: [
     EventsAppComponent,
