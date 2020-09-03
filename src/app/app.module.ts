@@ -6,7 +6,7 @@ import { EventsAppComponent } from './events-app.component'
 
 import { EventsListComponent, EventThumbnailComponent, 
           EventService, EventDetailsComponent, CreateEventComponent, 
-          EventRouteActivator, EventListResolver, CreateSessionComponent, 
+          EventResolver, EventListResolver, CreateSessionComponent, 
           SessionListComponent, DurationPipe, UpvoteComponent, VoterService,
           LocationValidator  } from './events/index'
 
@@ -73,7 +73,7 @@ export function checkDirtyState(component:CreateEventComponent) {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
     },
-    EventRouteActivator,
+    EventResolver,
     VoterService
   ],
   bootstrap: [EventsAppComponent]
