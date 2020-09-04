@@ -19,7 +19,7 @@ export class VoterService {
             .pipe(catchError(this.handleError('deleteVoter')))
             .subscribe();
 
-    }
+    } 
 
     addVoter(eventId:number, session: ISession, voterName: string) {
         session.voters.push(voterName);
